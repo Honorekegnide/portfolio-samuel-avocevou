@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Avocevou – Créateur Visuel & Designer IA</title>
+<meta name="description" content="Portfolio de Samuel Avocevou – Design graphique, branding, IA visuelle & musiques personnalisées au Bénin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;0,900;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+/* ============================================================
+   VARIABLES
+============================================================ */
+:root {
+  --b:#0d0dd3; --bm:#0a0aaa; --bl:#2626e8; --bd:#07077a;
+  --j:#ffc107; --jd:#e6a800; --jl:#ffcf47;
+  --w:#ffffff; --n:#06061a; --nd:#090924;
+  --g1:#f5f5ff; --g2:#eaeaf8; --g3:#d8d8f0;
+  --txt:#0a0a2e; --txt2:#4a4a8a;
+  --sh:0 20px 70px rgba(13,13,211,.13);
+  --shj:0 12px 40px rgba(255,193,7,.35);
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:var(--w);color:var(--txt);overflow-x:hidden;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;font-family:'Poppins',sans-serif;border:none;}
+
+/* ============================================================
+   SCROLLBAR
+============================================================ */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:var(--g1);}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--b),var(--j));border-radius:4px;}
+
+/* ============================================================
+   LOADER
+============================================================ */
+#loader{
+  position:fixed;inset:0;z-index:99999;
+  background:var(--n);
+  display:flex;align-items:center;justify-content:center;
+  flex-direction:column;gap:20px;
+  transition:opacity .6s ease, visibility .6s ease;
+}
+#loader.hide{opacity:0;visibility:hidden;}
+.loader-logo{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:2.5rem;
+  color:var(--w);letter-spacing:-2px;
+  animation:logoPulse 1.5s ease-in-out infinite;
+}
+.loader-logo span{color:var(--j);}
+@keyframes logoPulse{0%,100%{opacity:.4;transform:scale(.95);}50%{opacity:1;transform:scale(1);}}
+.loader-bar{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;}
+.loader-fill{height:100%;background:linear-gradient(90deg,var(--b),var(--j));border-radius:2px;animation:loaderFill 1.8s ease forwards;}
+@keyframes loaderFill{from{width:0;}to{width:100%;}}
+
+/* ============================================================
+   CURSOR PREMIUM
+============================================================ */
+#cur{position:fixed;top:0;left:0;pointer-events:none;z-index:99998;mix-blend-mode:difference;}
+.cur-dot{
+  width:8px;height:8px;background:var(--j);border-radius:50%;
+  position:absolute;transform:translate(-50%,-50%);
+  transition:transform .1s ease;
+}
+.cur-ring{
+  width:36px;height:36px;border:1.5px solid rgba(255,255,255,.7);border-radius:50%;
+  position:absolute;transform:translate(-50%,-50%);
+  transition:all .22s var(--ease);
+}
+.cur-ring.expand{width:60px;height:60px;border-color:rgba(255,193,7,.8);}
+
+/* ============================================================
+   PROGRESS BAR
+============================================================ */
+#pgbar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--b),var(--j),var(--bl));width:0;z-index:10000;transition:width .06s linear;border-radius:0 3px 3px 0;box-shadow:0 0 10px rgba(255,193,7,.5);}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  padding:22px 6%;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:all .4s var(--ease);
+}
+nav.glass{
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(13,13,211,.07);
+  padding:14px 6%;
+  box-shadow:0 4px 40px rgba(13,13,211,.08);
+}
+.nav-logo{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.55rem;
+  letter-spacing:-1.5px;color:var(--b);
+  display:flex;align-items:center;gap:3px;
+  position:relative;
+}
+.nav-logo::after{
+  content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;
+  background:linear-gradient(90deg,var(--b),var(--j));
+  transition:width .4s var(--ease);
+  border-radius:2px;
+}
+.nav-logo:hover::after{width:100%;}
+.nav-logo-dot{
+  width:9px;height:9px;background:var(--j);border-radius:50%;
+  margin-bottom:10px;
+  animation:dotBeat 2s ease-in-out infinite;
+}
+@keyframes dotBeat{0%,100%{transform:scale(1);}40%{transform:scale(1.8);}60%{transform:scale(1.2);}}
+.nav-links{display:flex;align-items:center;gap:6px;list-style:none;}
+.nav-links a{
+  padding:8px 16px;border-radius:50px;font-size:.83rem;font-weight:600;
+  color:var(--txt2);transition:all .3s var(--ease);position:relative;overflow:hidden;
+}
+.nav-links a::before{
+  content:'';position:absolute;inset:0;border-radius:50px;
+  background:linear-gradient(135deg,rgba(13,13,211,.08),rgba(255,193,7,.06));
+  transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);
+}
+.nav-links a:hover{color:var(--b);}
+.nav-links a:hover::before{transform:scaleX(1);}
+.nav-cta{
+  background:var(--b)!important;color:var(--w)!important;padding:10px 24px!important;
+  border-radius:50px!important;font-weight:700!important;
+  box-shadow:0 6px 24px rgba(13,13,211,.3)!important;
+  transition:all .35s var(--ease)!important;
+}
+.nav-cta:hover{background:var(--j)!important;color:var(--n)!important;box-shadow:var(--shj)!important;transform:translateY(-2px)!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:6px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--b);border-radius:3px;transition:all .35s var(--ease);}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0);}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob-nav{
+  display:none;position:fixed;top:70px;left:0;right:0;
+  background:rgba(255,255,255,.97);backdrop-filter:blur(20px);
+  padding:28px 6%;z-index:999;
+  border-bottom:1px solid var(--g2);
+  box-shadow:0 20px 60px rgba(0,0,0,.1);
+}
+.mob-nav.open{display:block;animation:slidedn .32s var(--ease);}
+@keyframes slidedn{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:translateY(0);}}
+.mob-nav ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.mob-nav a{display:block;padding:14px 18px;border-radius:14px;font-weight:600;color:var(--txt);transition:all .25s var(--ease);}
+.mob-nav a:hover{background:var(--g1);color:var(--b);padding-left:24px;}
+
+/* ============================================================
+   SECTION UTILITIES
+============================================================ */
+section{padding:120px 6%;}
+.wrap{max-width:1280px;margin:0 auto;}
+.stag{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(13,13,211,.07);color:var(--b);
+  padding:7px 18px;border-radius:50px;
+  font-size:.74rem;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  margin-bottom:18px;border:1px solid rgba(13,13,211,.1);
+  animation:tagShimmer 3s ease-in-out infinite;
+}
+@keyframes tagShimmer{0%,100%{box-shadow:none;}50%{box-shadow:0 0 20px rgba(13,13,211,.15);}}
+.stit{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;margin-bottom:18px;
+}
+.stit em{font-style:normal;color:var(--b);}
+.ssub{color:var(--txt2);font-size:1rem;line-height:1.88;max-width:600px;}
+
+/* ============================================================
+   REVEAL ANIMATIONS — 6 variantes
+============================================================ */
+.rv{opacity:0;transition:opacity .75s var(--ease),transform .75s var(--ease);}
+.rv.up{transform:translateY(50px);}
+.rv.left{transform:translateX(-50px);}
+.rv.right{transform:translateX(50px);}
+.rv.scale{transform:scale(.88);}
+.rv.rotate{transform:rotate(-6deg) translateY(30px);}
+.rv.blur{transform:translateY(20px);filter:blur(8px);}
+.rv.in{opacity:1!important;transform:none!important;filter:none!important;}
+.d1{transition-delay:.1s!important;}.d2{transition-delay:.2s!important;}
+.d3{transition-delay:.3s!important;}.d4{transition-delay:.4s!important;}
+.d5{transition-delay:.5s!important;}.d6{transition-delay:.6s!important;}
+
+/* ============================================================
+   HERO
+============================================================ */
+#hero{
+  min-height:100vh;padding:0 6%;
+  display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:var(--n);
+}
+/* Animated gradient mesh */
+.hero-mesh{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 65% at 72% 50%,rgba(13,13,211,.6) 0%,transparent 68%),
+    radial-gradient(ellipse 45% 55% at 8% 80%,rgba(255,193,7,.2) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 45% at 38% 5%,rgba(13,13,211,.28) 0%,transparent 60%);
+  animation:meshAnim 12s ease-in-out infinite alternate;
+}
+@keyframes meshAnim{
+  0%{background-size:100% 100%,100% 100%,100% 100%;}
+  50%{background-position:72% 50%,12% 75%,35% 8%;}
+  100%{background-position:70% 52%,6% 82%,40% 3%;}
+}
+/* Moving grid */
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:70px 70px;
+  animation:gridMove 25s linear infinite;
+}
+@keyframes gridMove{from{background-position:0 0;}to{background-position:70px 70px;}}
+/* Floating particles */
+.particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.particle{
+  position:absolute;border-radius:50%;
+  animation:particleFly linear infinite;
+  opacity:0;
+}
+@keyframes particleFly{
+  0%{transform:translateY(100vh) translateX(0) scale(0);opacity:0;}
+  10%{opacity:1;}
+  90%{opacity:.6;}
+  100%{transform:translateY(-20vh) translateX(40px) scale(1.2);opacity:0;}
+}
+/* Aurora top */
+.hero-aurora{
+  position:absolute;top:-60px;left:0;right:0;height:300px;
+  background:linear-gradient(180deg,rgba(13,13,211,.18) 0%,transparent 100%);
+  filter:blur(40px);
+  animation:auroraWave 8s ease-in-out infinite alternate;
+}
+@keyframes auroraWave{from{transform:skewY(-1deg);}to{transform:skewY(1deg);}}
+
+.hero-inner{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;
+  max-width:1280px;margin:0 auto;width:100%;
+  padding-top:110px;padding-bottom:40px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.72);padding:8px 22px;border-radius:50px;
+  font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;
+  margin-bottom:28px;
+  animation:fadeup .8s var(--ease) .15s both;
+}
+.hero-eyebrow .dot-live{
+  width:7px;height:7px;background:#2ecc71;border-radius:50%;
+  box-shadow:0 0 10px #2ecc71;
+  animation:livePulse 1.5s ease-in-out infinite;
+}
+@keyframes livePulse{0%,100%{box-shadow:0 0 6px #2ecc71;}50%{box-shadow:0 0 20px #2ecc71,0 0 40px rgba(46,204,113,.4);}}
+.hero-h1{
+  font-family:'Montserrat',sans-serif;font-weight:900;
+  font-size:clamp(2.6rem,5.5vw,4.6rem);
+  line-height:1.06;color:var(--w);
+  margin-bottom:26px;
+  animation:fadeup .9s var(--ease) .3s both;
+}
+.hero-h1 .hl{
+  display:inline-block;
+  background:linear-gradient(100deg,var(--j),var(--jl),var(--j));
+  background-size:200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:textShimmer 3s linear infinite;
+}
+@keyframes textShimmer{0%{background-position:200%;}100%{background-position:-200%;}}
+.hero-p{
+  color:rgba(255,255,255,.58);font-size:1.02rem;line-height:1.95;
+  max-width:490px;margin-bottom:44px;
+  animation:fadeup .9s var(--ease) .45s both;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeup .9s var(--ease) .6s both;}
+.btn-y{
+  background:linear-gradient(135deg,var(--j),var(--jl));
+  color:var(--n);padding:16px 36px;border-radius:50px;
+  font-weight:800;font-size:.92rem;letter-spacing:.3px;
+  display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 12px 38px rgba(255,193,7,.42);
+  transition:all .38s var(--ease);border:none;position:relative;overflow:hidden;
+}
+.btn-y::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(255,255,255,.25),transparent);
+  transform:translateX(-100%) skewX(-15deg);
+  transition:transform .5s var(--ease);
+}
+.btn-y:hover::after{transform:translateX(120%) skewX(-15deg);}
+.btn-y:hover{transform:translateY(-5px);box-shadow:0 22px 55px rgba(255,193,7,.58);}
+.btn-ghost{
+  background:transparent;color:rgba(255,255,255,.82);
+  padding:16px 36px;border-radius:50px;border:1.5px solid rgba(255,255,255,.2);
+  font-weight:700;font-size:.92rem;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:all .38s var(--ease);
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.7);color:var(--w);background:rgba(255,255,255,.07);transform:translateY(-5px);}
+
+/* Hero stats */
+.hero-stats{
+  display:flex;gap:28px;margin-top:36px;
+  animation:fadeup .9s var(--ease) .75s both;
+}
+.hero-stat{
+  display:flex;flex-direction:column;gap:2px;
+  padding:16px 20px;border-radius:16px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  transition:all .35s var(--ease);
+}
+.hero-stat:hover{background:rgba(255,255,255,.09);transform:translateY(-3px);}
+.hero-stat-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.8rem;color:var(--j);line-height:1;}
+.hero-stat-label{font-size:.72rem;color:rgba(255,255,255,.45);font-weight:600;letter-spacing:.5px;text-transform:uppercase;}
+
+/* Hero visual */
+.hero-visual{display:flex;justify-content:center;animation:fadeup .9s var(--ease) .35s both;position:relative;}
+.hero-card{position:relative;width:340px;}
+.hero-img-frame{
+  width:100%;aspect-ratio:3/4;
+  border-radius:30px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.12);
+  background:linear-gradient(160deg,rgba(13,13,211,.45),rgba(255,193,7,.1));
+  position:relative;
+  box-shadow:0 50px 120px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06),inset 0 1px 0 rgba(255,255,255,.1);
+}
+.hero-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s var(--ease);}
+.hero-img-frame:hover img{transform:scale(1.04);}
+/* Image shimmer overlay */
+.hero-img-frame::before{
+  content:'';position:absolute;inset:0;z-index:2;
+  background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%,rgba(255,193,7,.05) 100%);
+  pointer-events:none;
+}
+.hero-glow{
+  position:absolute;bottom:-50px;left:50%;transform:translateX(-50%);
+  width:250px;height:100px;
+  background:radial-gradient(ellipse,rgba(255,193,7,.4),transparent 70%);
+  filter:blur(25px);
+  animation:glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{opacity:.5;}50%{opacity:1;}}
+/* Floating badge top */
+.hero-badge-f{
+  position:absolute;top:-18px;right:-22px;
+  background:linear-gradient(135deg,var(--j),var(--jl));
+  border-radius:18px;padding:12px 20px;
+  font-weight:800;font-size:.78rem;color:var(--n);
+  box-shadow:var(--shj),0 0 30px rgba(255,193,7,.3);
+  display:flex;align-items:center;gap:8px;white-space:nowrap;
+  animation:floatY 4.5s ease-in-out infinite;
+}
+/* Floating badge bottom */
+.hero-badge-b{
+  position:absolute;bottom:28px;left:-32px;
+  background:rgba(255,255,255,.08);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:18px;padding:14px 22px;
+  color:white;font-size:.78rem;font-weight:600;
+  display:flex;align-items:center;gap:12px;
+  animation:floatY 5.5s ease-in-out infinite;animation-delay:2.2s;
+  box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+.hero-badge-b .num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.6rem;color:var(--j);}
+/* Side decoration dots */
+.hero-deco-dots{
+  position:absolute;right:-40px;top:50%;transform:translateY(-50%);
+  display:grid;grid-template-columns:repeat(3,8px);gap:8px;
+}
+.hero-deco-dots span{
+  width:8px;height:8px;border-radius:50%;
+  background:rgba(255,255,255,.15);
+  animation:dotsFade 2.5s ease-in-out infinite;
+}
+.hero-deco-dots span:nth-child(odd){animation-delay:.5s;}
+@keyframes dotsFade{0%,100%{opacity:.2;}50%{opacity:.8;}}
+@keyframes floatY{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+@keyframes fadeup{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:translateY(0);}}
+
+.hero-scroll{
+  position:absolute;bottom:38px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:rgba(255,255,255,.3);font-size:.68rem;letter-spacing:2.5px;text-transform:uppercase;
+  animation:fadeup 1s var(--ease) 1.2s both;
+}
+.hero-scroll-line{width:1px;height:50px;background:linear-gradient(var(--j),transparent);animation:scrollLine 2.2s ease-in-out infinite;}
+@keyframes scrollLine{0%,100%{transform:scaleY(1);opacity:.5;}50%{transform:scaleY(.4);opacity:.15;}}
+
+/* ============================================================
+   ABOUT
+============================================================ */
+#about{background:var(--g1);position:relative;overflow:hidden;}
+#about::before{
+  content:'';position:absolute;top:-200px;right:-200px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(rgba(13,13,211,.06),transparent 70%);
+  pointer-events:none;
+}
+.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:90px;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-fr{
+  width:100%;aspect-ratio:4/5;border-radius:30px;overflow:hidden;
+  background:linear-gradient(160deg,var(--g2),var(--g3));
+  border:1px solid var(--g3);
+  box-shadow:var(--sh),0 0 0 10px rgba(13,13,211,.04);
+  position:relative;
+  transition:transform .5s var(--ease);
+}
+.about-img-fr:hover{transform:scale(1.02);}
+.about-img-fr img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.about-img-fr:hover img{transform:scale(1.05);}
+.about-deco-sq{
+  position:absolute;bottom:-24px;right:-24px;
+  width:110px;height:110px;
+  background:linear-gradient(135deg,var(--j),var(--jl));
+  border-radius:24px;z-index:-1;
+  animation:rotateSq 22s linear infinite;
+  box-shadow:var(--shj);
+}
+@keyframes rotateSq{from{transform:rotate(0);}to{transform:rotate(360deg);}}
+.about-deco-dot{
+  position:absolute;top:18px;left:-20px;
+  width:65px;height:65px;border-radius:50%;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  opacity:.18;animation:dotPop 4s ease-in-out infinite;
+}
+@keyframes dotPop{0%,100%{transform:scale(1);}50%{transform:scale(1.15);}}
+.about-deco-line{
+  position:absolute;bottom:60px;left:-35px;
+  width:3px;height:80px;
+  background:linear-gradient(var(--j),var(--b));
+  border-radius:3px;
+}
+.about-tonson{
+  display:inline-flex;align-items:center;gap:14px;
+  background:linear-gradient(135deg,rgba(13,13,211,.07),rgba(255,193,7,.07));
+  border:1px solid rgba(13,13,211,.12);
+  border-radius:18px;padding:16px 22px;
+  margin-top:28px;
+  transition:all .35s var(--ease);
+}
+.about-tonson:hover{transform:translateX(6px);box-shadow:var(--sh);}
+.about-tonson-icon{
+  width:48px;height:48px;border-radius:14px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--j),var(--jd));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;color:var(--n);
+  animation:iconSpin 6s ease-in-out infinite;
+}
+@keyframes iconSpin{0%,100%{transform:rotate(0);}25%{transform:rotate(10deg);}75%{transform:rotate(-8deg);}}
+.about-tonson-text strong{display:block;font-weight:700;font-size:.88rem;margin-bottom:2px;}
+.about-tonson-text span{font-size:.78rem;color:var(--txt2);}
+/* Skills grid */
+.skills-blocks{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin:32px 0;}
+.skill-block{
+  background:var(--w);border:1px solid var(--g3);
+  border-radius:18px;padding:18px 16px;
+  display:flex;flex-direction:column;align-items:flex-start;gap:10px;
+  transition:all .38s var(--ease);cursor:default;
+  position:relative;overflow:hidden;
+}
+.skill-block::before{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--b),var(--j));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .38s var(--ease);
+}
+.skill-block:hover{transform:translateY(-7px);box-shadow:var(--sh);border-color:rgba(13,13,211,.18);}
+.skill-block:hover::before{transform:scaleX(1);}
+.skill-block:hover .sb-icon{background:linear-gradient(135deg,var(--b),var(--bl));color:var(--w);transform:rotate(10deg) scale(1.1);}
+.sb-icon{
+  width:40px;height:40px;border-radius:12px;
+  background:var(--g1);color:var(--b);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;transition:all .38s var(--ease);flex-shrink:0;
+}
+.sb-label{font-weight:700;font-size:.78rem;color:var(--txt);line-height:1.3;}
+
+/* ============================================================
+   SERVICES
+============================================================ */
+#services{background:var(--n);color:var(--w);position:relative;overflow:hidden;}
+#services::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,193,7,.5),transparent);
+}
+#services::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(13,13,211,.5),transparent);
+}
+/* Moving light across services bg */
+.services-light{
+  position:absolute;top:50%;left:-200px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(rgba(13,13,211,.25),transparent 70%);
+  filter:blur(60px);pointer-events:none;
+  animation:lightTravel 10s ease-in-out infinite;
+}
+@keyframes lightTravel{0%,100%{left:-100px;}50%{left:calc(100% - 100px);}}
+#services .stag{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1);}
+#services .stit em{color:var(--j);}
+#services .ssub{color:rgba(255,255,255,.5);}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+.svc-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:26px;padding:36px 32px;
+  position:relative;overflow:hidden;transition:all .42s var(--ease);
+}
+.svc-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(13,13,211,.14),rgba(255,193,7,.05));
+  opacity:0;transition:opacity .4s;
+}
+.svc-card::after{
+  content:'';position:absolute;top:0;left:-100%;width:100%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,193,7,.6),transparent);
+  transition:left .6s var(--ease);
+}
+.svc-card:hover{transform:translateY(-10px);border-color:rgba(13,13,211,.45);box-shadow:0 35px 80px rgba(13,13,211,.28);}
+.svc-card:hover::before{opacity:1;}
+.svc-card:hover::after{left:100%;}
+.svc-num{
+  font-family:'Montserrat',sans-serif;font-weight:900;font-size:4rem;
+  color:rgba(255,255,255,.04);position:absolute;top:18px;right:22px;
+  line-height:1;pointer-events:none;
+  transition:all .4s var(--ease);
+}
+.svc-card:hover .svc-num{color:rgba(255,255,255,.07);transform:scale(1.1);}
+.svc-icon-w{
+  width:58px;height:58px;border-radius:18px;
+  background:linear-gradient(135deg,rgba(13,13,211,.32),rgba(13,13,211,.16));
+  border:1px solid rgba(13,13,211,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;color:var(--j);
+  margin-bottom:24px;transition:all .42s var(--ease);
+}
+.svc-card:hover .svc-icon-w{background:linear-gradient(135deg,var(--b),var(--bl));border-color:var(--b);transform:rotate(8deg) scale(1.1);}
+.svc-card h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.06rem;color:var(--w);margin-bottom:10px;}
+.svc-card p{color:rgba(255,255,255,.45);font-size:.86rem;line-height:1.78;}
+
+/* ============================================================
+   PORTFOLIO
+============================================================ */
+#portfolio{background:var(--w);position:relative;}
+#portfolio::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--b),var(--j),var(--b));
+  background-size:200%;
+  animation:borderAnim 4s linear infinite;
+}
+@keyframes borderAnim{from{background-position:0%;}to{background-position:200%;}}
+.pf-head{text-align:center;margin-bottom:54px;}
+.pf-filters{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:54px;}
+.pf-btn{
+  padding:10px 24px;border-radius:50px;border:1.5px solid var(--g3);
+  background:transparent;font-family:'Poppins',sans-serif;
+  font-weight:600;font-size:.8rem;color:var(--txt2);
+  transition:all .35s var(--ease);position:relative;overflow:hidden;
+}
+.pf-btn::before{
+  content:'';position:absolute;inset:0;border-radius:50px;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  transform:scale(0);transition:transform .35s var(--ease);
+}
+.pf-btn span{position:relative;z-index:1;}
+.pf-btn.on,.pf-btn:hover{color:var(--w);border-color:var(--b);box-shadow:0 8px 25px rgba(13,13,211,.28);}
+.pf-btn.on::before,.pf-btn:hover::before{transform:scale(1);}
+.pf-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:26px;
+}
+
+/* ============================================================
+   PORTFOLIO ITEM — CAROUSEL FIXED
+============================================================ */
+.pf-item{
+  border-radius:24px;overflow:hidden;background:var(--g1);
+  border:1px solid var(--g2);
+  /* FIX: pas de "all" qui interfère avec translateX des slides */
+  transition:transform .42s var(--ease), box-shadow .42s var(--ease), border-color .42s var(--ease);
+  position:relative;
+}
+.pf-item:hover{transform:translateY(-10px);box-shadow:0 30px 80px rgba(13,13,211,.16);border-color:rgba(13,13,211,.2);}
+
+/* ========== CAROUSEL CSS FIX ========== */
+.pf-car{
+  position:relative;overflow:hidden;
+  height:270px;
+  /* Arrows hidden by default, visible on hover */
+}
+.pf-car .pf-arr{opacity:0;transform:translateY(-50%) scale(.8);transition:all .3s var(--ease);}
+.pf-item:hover .pf-car .pf-arr{opacity:1;transform:translateY(-50%) scale(1);}
+
+/* FIX BUG: width:100% sur .pf-slides est OBLIGATOIRE */
+.pf-slides{
+  display:flex;
+  width:100%;          /* ← FIX CRUCIAL */
+  height:100%;
+  flex-wrap:nowrap;    /* ← FIX CRUCIAL */
+  transition:transform .55s var(--ease);
+  will-change:transform;
+}
+/* FIX BUG: width:100% en plus de min-width:100% */
+.pf-slide{
+  min-width:100%;
+  width:100%;          /* ← FIX CRUCIAL */
+  height:100%;
+  flex-shrink:0;
+  position:relative;
+  overflow:hidden;
+}
+.pf-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s var(--ease);}
+.pf-slide:hover img{transform:scale(1.04);}
+.pf-ph{
+  background:linear-gradient(135deg,var(--g2),var(--g3));
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:10px;color:var(--b);text-align:center;padding:20px;
+  font-size:.78rem;font-weight:600;width:100%;height:100%;
+}
+.pf-ph i{font-size:2.2rem;opacity:.35;}
+/* Slide counter */
+.pf-counter{
+  position:absolute;top:12px;left:12px;z-index:4;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(8px);
+  color:rgba(255,255,255,.9);font-size:.68rem;font-weight:700;
+  padding:4px 10px;border-radius:20px;
+  display:none;
+}
+.pf-counter.show{display:block;}
+.pf-arr{
+  position:absolute;top:50%;
+  width:36px;height:36px;border-radius:50%;border:none;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(10px);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.75rem;color:var(--n);
+  box-shadow:0 4px 18px rgba(0,0,0,.15);
+  z-index:3;cursor:pointer;
+}
+.pf-arr.l{left:10px;}.pf-arr.r{right:10px;}
+.pf-arr:hover{background:var(--j);color:var(--n);transform:translateY(-50%) scale(1.12)!important;}
+.pf-dots{
+  position:absolute;bottom:12px;left:50%;transform:translateX(-50%);
+  display:flex;gap:6px;z-index:3;
+}
+.pf-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(255,255,255,.4);
+  border:none;transition:all .3s var(--ease);cursor:pointer;
+}
+.pf-dot.on{background:var(--w);width:18px;border-radius:4px;}
+/* Gradient overlay bottom of image */
+.pf-car-overlay{
+  position:absolute;bottom:0;left:0;right:0;height:60px;
+  background:linear-gradient(transparent,rgba(0,0,0,.25));
+  pointer-events:none;z-index:2;
+}
+.pf-info{padding:22px 24px 24px;}
+.pf-cat{font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--b);margin-bottom:5px;}
+.pf-info h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.02rem;margin-bottom:8px;color:var(--txt);}
+.pf-desc{font-size:.84rem;color:var(--txt2);line-height:1.72;display:none;}
+.btn-vp{
+  margin-top:14px;padding:8px 20px;
+  background:transparent;border:1.5px solid var(--b);
+  color:var(--b);border-radius:50px;
+  font-family:'Poppins',sans-serif;font-weight:700;font-size:.78rem;
+  display:inline-flex;align-items:center;gap:7px;transition:all .35s var(--ease);
+}
+.btn-vp:hover{background:var(--b);color:var(--w);transform:scale(1.04);}
+.pf-item.exp .pf-desc{display:block;animation:descFade .3s var(--ease);}
+@keyframes descFade{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:none;}}
+
+/* ============================================================
+   VIDÉOS IA — sans vignette, balise <video> directe
+============================================================ */
+#videos{background:var(--g1);position:relative;overflow:hidden;}
+#videos::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(rgba(13,13,211,.07),transparent 70%);
+  pointer-events:none;
+}
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px;}
+.vid-card{
+  background:var(--w);border:1px solid var(--g3);
+  border-radius:24px;overflow:hidden;transition:all .42s var(--ease);
+}
+.vid-card:hover{transform:translateY(-8px);box-shadow:var(--sh);}
+/* Video native player wrapper */
+.vid-wrap{
+  position:relative;width:100%;background:#06061a;
+}
+.vid-wrap video{
+  width:100%;display:block;
+  background:#06061a;
+  border-radius:0;
+}
+.vid-ai-badge{
+  position:absolute;top:12px;left:12px;z-index:5;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  color:var(--w);padding:5px 14px;border-radius:50px;
+  font-size:.68rem;font-weight:700;letter-spacing:.5px;
+  display:flex;align-items:center;gap:6px;pointer-events:none;
+}
+.vid-info{padding:20px 24px 26px;}
+.vid-info h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.98rem;margin-bottom:7px;color:var(--txt);}
+.vid-info p{color:var(--txt2);font-size:.84rem;line-height:1.72;}
+
+/* ============================================================
+   MUSIQUES
+============================================================ */
+#musiques{background:var(--n);position:relative;overflow:hidden;}
+#musiques::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%,rgba(13,13,211,.2),transparent),
+    radial-gradient(ellipse 40% 60% at 80% 30%,rgba(255,193,7,.08),transparent);
+}
+#musiques .stag{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1);}
+#musiques .stit em{color:var(--j);}
+#musiques .ssub{color:rgba(255,255,255,.5);}
+.mus-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px;}
+.mus-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:24px;padding:28px 26px;transition:all .42s var(--ease);position:relative;overflow:hidden;
+}
+.mus-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--j),transparent);opacity:0;transition:opacity .4s;}
+.mus-card:hover{border-color:rgba(255,193,7,.22);box-shadow:0 25px 65px rgba(0,0,0,.4);}
+.mus-card:hover::before{opacity:1;}
+.mus-card.playing{border-color:rgba(255,193,7,.35);background:rgba(255,193,7,.05);}
+.mus-top{display:flex;align-items:center;gap:18px;margin-bottom:16px;}
+.mus-icon{
+  width:55px;height:55px;border-radius:17px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--w);position:relative;overflow:hidden;
+}
+.mus-waves{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:3px;
+  opacity:0;transition:opacity .4s;
+}
+.mus-card.playing .mus-waves{opacity:1;}
+.mus-card.playing .mus-icon i{opacity:0;}
+.mus-waves span{
+  width:3px;border-radius:3px;background:rgba(255,255,255,.75);
+  animation:wavBar 1.3s ease-in-out infinite;
+}
+.mus-waves span:nth-child(1){height:8px;animation-delay:0s;}
+.mus-waves span:nth-child(2){height:19px;animation-delay:.1s;}
+.mus-waves span:nth-child(3){height:13px;animation-delay:.2s;}
+.mus-waves span:nth-child(4){height:22px;animation-delay:.3s;}
+.mus-waves span:nth-child(5){height:8px;animation-delay:.4s;}
+@keyframes wavBar{0%,100%{transform:scaleY(1);}50%{transform:scaleY(2);}}
+.mus-meta h4{font-family:'Montserrat',sans-serif;font-weight:800;font-size:.93rem;color:var(--w);margin-bottom:3px;}
+.mus-meta span{font-size:.74rem;color:rgba(255,255,255,.4);}
+.mus-desc{font-size:.82rem;color:rgba(255,255,255,.45);line-height:1.72;margin-bottom:18px;}
+.mus-ctrl{display:flex;align-items:center;gap:14px;}
+.mus-play{
+  width:44px;height:44px;border-radius:50%;border:none;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  color:var(--w);display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;flex-shrink:0;transition:all .38s var(--ease);
+  box-shadow:0 6px 22px rgba(13,13,211,.38);
+}
+.mus-play:hover{transform:scale(1.12);box-shadow:0 12px 32px rgba(13,13,211,.55);}
+.mus-card.playing .mus-play{background:linear-gradient(135deg,var(--j),var(--jd));color:var(--n);}
+.mus-prog-w{flex:1;display:flex;flex-direction:column;gap:7px;}
+.mus-prog{
+  width:100%;height:3px;background:rgba(255,255,255,.1);
+  border-radius:3px;appearance:none;outline:none;border:none;cursor:pointer;
+}
+.mus-prog::-webkit-slider-thumb{appearance:none;width:14px;height:14px;border-radius:50%;background:var(--j);box-shadow:0 2px 8px rgba(255,193,7,.5);}
+.mus-time{font-size:.68rem;color:rgba(255,255,255,.3);text-align:right;}
+audio{display:none;}
+
+/* ============================================================
+   TÉMOIGNAGES
+============================================================ */
+#temoignages{
+  background:linear-gradient(165deg,var(--b) 0%,#0a0a6e 40%,var(--bd) 100%);
+  color:var(--w);position:relative;overflow:hidden;
+}
+#temoignages::before{
+  content:'';position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+  opacity:.5;pointer-events:none;
+}
+#temoignages .stag{background:rgba(255,255,255,.1);color:rgba(255,255,255,.75);border-color:rgba(255,255,255,.15);}
+#temoignages .stit em{color:var(--j);}
+.tem-track{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:18px;}
+.tem-track::-webkit-scrollbar{display:none;}
+.tem-card{
+  min-width:350px;max-width:370px;
+  background:rgba(255,255,255,.07);backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:24px;padding:32px;
+  scroll-snap-align:start;transition:all .42s var(--ease);
+  position:relative;overflow:hidden;
+}
+.tem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);opacity:0;transition:opacity .4s;}
+.tem-card:hover{background:rgba(255,255,255,.12);transform:translateY(-5px);}
+.tem-card:hover::before{opacity:1;}
+.tem-stars{color:var(--j);font-size:1rem;letter-spacing:2px;margin-bottom:16px;}
+.tem-q{font-size:2.5rem;color:rgba(255,193,7,.3);font-family:Georgia,serif;line-height:1;margin-bottom:8px;}
+.tem-text{color:rgba(255,255,255,.84);font-size:.9rem;line-height:1.85;font-style:italic;margin-bottom:24px;}
+.tem-auth{display:flex;align-items:center;gap:15px;}
+.tem-av{
+  width:46px;height:46px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--j),var(--jd));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;font-size:1rem;color:var(--n);
+}
+.tem-name{font-weight:700;font-size:.88rem;color:var(--w);}
+.tem-src{font-size:.72rem;color:rgba(255,255,255,.45);margin-top:2px;}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+#contact{background:var(--g1);position:relative;overflow:hidden;}
+.ctt-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start;}
+.ctt-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 22px;border-radius:18px;
+  background:var(--w);border:1px solid var(--g3);
+  transition:all .38s var(--ease);text-decoration:none;color:var(--txt);
+  margin-bottom:14px;position:relative;overflow:hidden;
+}
+.ctt-item::after{
+  content:'';position:absolute;right:20px;
+  font-family:'Font Awesome 6 Free';content:'\f054';
+  font-weight:900;color:var(--b);opacity:0;
+  transform:translateX(-8px);transition:all .3s var(--ease);
+  font-size:.8rem;
+}
+.ctt-item:hover{transform:translateX(6px);border-color:rgba(13,13,211,.2);box-shadow:0 8px 32px rgba(13,13,211,.1);}
+.ctt-item:hover::after{opacity:1;transform:translateX(0);}
+.ctt-ico{
+  width:46px;height:46px;border-radius:14px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;color:var(--w);transition:transform .35s var(--ease);
+}
+.ctt-item:hover .ctt-ico{transform:rotate(8deg) scale(1.1);}
+.ctt-ico.b{background:linear-gradient(135deg,var(--b),var(--bl));}
+.ctt-ico.g{background:linear-gradient(135deg,#25d366,#128c7e);}
+.ctt-item span{font-weight:600;font-size:.88rem;}
+
+/* Social buttons avec icônes */
+.soc-row{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+.soc-btn{
+  display:flex;align-items:center;gap:9px;
+  padding:10px 18px;border-radius:50px;
+  font-size:.82rem;font-weight:700;color:var(--w);
+  transition:all .38s var(--ease);
+  text-decoration:none;
+}
+.soc-btn i{font-size:1rem;}
+.soc-btn:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+.soc-fb{background:#1877f2;}
+.soc-ig{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);}
+.soc-li{background:#0077b5;}
+.soc-wa{background:#25d366;}
+/* Also keep icon-only version for footer */
+.soc-btn-ico{
+  width:50px;height:50px;border-radius:15px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;color:var(--w);transition:all .38s var(--ease);
+}
+.soc-btn-ico:hover{transform:translateY(-5px) scale(1.1);box-shadow:0 12px 28px rgba(0,0,0,.22);}
+
+.ctt-form{
+  background:var(--w);border-radius:26px;padding:42px;
+  border:1px solid var(--g3);box-shadow:var(--sh);
+  position:relative;overflow:hidden;
+}
+.ctt-form::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--b),var(--j),var(--bl));
+  background-size:200%;animation:borderAnim 3s linear infinite;
+}
+.ctt-form h3{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.2rem;margin-bottom:28px;display:flex;align-items:center;gap:10px;}
+.fg{margin-bottom:20px;}
+.fg label{display:block;font-weight:700;font-size:.76rem;letter-spacing:.5px;text-transform:uppercase;color:var(--txt2);margin-bottom:8px;}
+.fg input,.fg textarea,.fg select{
+  width:100%;padding:14px 20px;
+  border:1.5px solid var(--g3);border-radius:14px;
+  font-family:'Poppins',sans-serif;font-size:.88rem;
+  background:var(--g1);color:var(--txt);outline:none;resize:none;
+  transition:all .35s var(--ease);
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--b);background:var(--w);box-shadow:0 0 0 4px rgba(13,13,211,.07);}
+.fg textarea{height:115px;}
+.btn-wa{
+  width:100%;padding:16px;border:none;border-radius:16px;
+  background:linear-gradient(135deg,#25d366,#20bc5a);color:var(--w);
+  font-family:'Poppins',sans-serif;font-weight:800;font-size:.95rem;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  transition:all .38s var(--ease);box-shadow:0 8px 28px rgba(37,211,102,.32);cursor:pointer;
+  position:relative;overflow:hidden;
+}
+.btn-wa::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18),transparent);transform:translateX(-100%) skewX(-15deg);transition:transform .5s var(--ease);}
+.btn-wa:hover::after{transform:translateX(120%) skewX(-15deg);}
+.btn-wa:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(37,211,102,.48);}
+.wa-note{text-align:center;margin-top:14px;font-size:.76rem;color:var(--txt2);display:flex;align-items:center;justify-content:center;gap:6px;}
+.wa-note i{color:#25d366;}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer{background:var(--nd);color:rgba(255,255,255,.5);padding:52px 6%;position:relative;overflow:hidden;}
+footer::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);}
+.ft-in{max-width:1280px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center;}
+.ft-logo{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.7rem;color:var(--w);display:flex;align-items:center;gap:4px;letter-spacing:-1px;}
+.ft-logo span{color:var(--j);}
+.ft-tagline{font-size:.86rem;color:rgba(255,255,255,.38);letter-spacing:.5px;}
+footer p{font-size:.78rem;}
+
+/* ============================================================
+   BACK TO TOP
+============================================================ */
+.b2t{
+  position:fixed;bottom:30px;right:30px;z-index:500;
+  width:50px;height:50px;border-radius:50%;border:none;
+  background:linear-gradient(135deg,var(--b),var(--bl));
+  color:var(--w);display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;box-shadow:0 6px 24px rgba(13,13,211,.42);
+  transition:all .4s var(--ease);opacity:0;pointer-events:none;cursor:pointer;
+}
+.b2t.on{opacity:1;pointer-events:all;}
+.b2t:hover{transform:translateY(-5px) scale(1.08);box-shadow:0 14px 35px rgba(13,13,211,.55);}
+
+/* ============================================================
+   MAGIC ANIMATIONS SUPPLÉMENTAIRES
+============================================================ */
+/* Magnetic effect via JS */
+.magnetic{transition:transform .4s var(--ease);}
+
+/* Sparkle animation */
+@keyframes sparkle{
+  0%{opacity:0;transform:scale(0) rotate(0deg);}
+  50%{opacity:1;transform:scale(1) rotate(180deg);}
+  100%{opacity:0;transform:scale(0) rotate(360deg);}
+}
+.sparkle-star{
+  position:fixed;pointer-events:none;z-index:9998;color:var(--j);font-size:14px;
+  animation:sparkle .6s var(--ease) forwards;
+}
+
+/* Section entrance with clip-path */
+.clip-reveal{
+  clip-path:polygon(0 100%,100% 100%,100% 100%,0 100%);
+  transition:clip-path .8s var(--ease);
+}
+.clip-reveal.in{clip-path:polygon(0 0,100% 0,100% 100%,0 100%);}
+
+/* Tilt card effect (via JS) */
+.tilt{transform-style:preserve-3d;transition:transform .15s ease;}
+
+/* Number counter animation */
+.count-num{display:inline-block;}
+
+/* ============================================================
+   IMAGE LAZY LOADING
+============================================================ */
+img[loading="lazy"]{
+  background:linear-gradient(110deg,var(--g2) 30%,var(--g1) 50%,var(--g2) 70%);
+  background-size:200%;
+  animation:imgSkeleton 1.5s linear infinite;
+}
+@keyframes imgSkeleton{0%{background-position:200%;}100%{background-position:-200%;}}
+img.loaded{animation:none;background:none;}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media(max-width:1100px){
+  .hero-inner,.about-grid,.ctt-grid{grid-template-columns:1fr;}
+  .hero-inner{padding-top:130px;padding-bottom:60px;}
+  .hero-visual{order:-1;margin-bottom:20px;}
+  .hero-card{width:290px;}
+  .about-img-wrap{max-width:380px;margin:0 auto;}
+  .hero-deco-dots{display:none;}
+}
+@media(max-width:768px){
+  section{padding:90px 5%;}
+  nav .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .hero-inner{gap:30px;}
+  .pf-grid,.mus-grid,.vid-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .skills-blocks{grid-template-columns:repeat(2,1fr);}
+  .hero-badge-b{left:-8px;}
+  .hero-stats{flex-wrap:wrap;gap:12px;}
+  .soc-btn{font-size:.78rem;padding:9px 14px;}
+  #cur,#cur .cur-ring{display:none;}
+}
+@media(max-width:480px){
+  .skills-blocks{grid-template-columns:1fr 1fr;}
+  .tem-card{min-width:290px;}
+  .hero-card{width:250px;}
+  .hero-badge-f{right:-8px;font-size:.72rem;padding:10px 14px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== LOADER ==================== -->
+<div id="loader">
+  <div class="loader-logo">Samuel AVOCEVOU<span></span></div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ==================== CURSOR ==================== -->
+<div id="cur">
+  <div class="cur-dot"></div>
+  <div class="cur-ring"></div>
+</div>
+
+<!-- ==================== PROGRESS BAR ==================== -->
+<div id="pgbar"></div>
+
+<!-- ==================== NAV ==================== -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Samuel AVOCEVOU<span class="nav-logo-dot"></span></a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#videos">Vidéos IA</a></li>
+    <li><a href="#musiques">Musiques</a></li>
+    <li><a href="#temoignages">Avis</a></li>
+    <li><a href="#contact" class="nav-cta"><span>Contact</span></a></li>
+  </ul>
+  <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <ul>
+    <li><a href="#about" onclick="closeMob()"><i class="fas fa-user" style="width:20px;color:var(--b)"></i> À propos</a></li>
+    <li><a href="#services" onclick="closeMob()"><i class="fas fa-briefcase" style="width:20px;color:var(--b)"></i> Services</a></li>
+    <li><a href="#portfolio" onclick="closeMob()"><i class="fas fa-layer-group" style="width:20px;color:var(--b)"></i> Portfolio</a></li>
+    <li><a href="#videos" onclick="closeMob()"><i class="fas fa-video" style="width:20px;color:var(--b)"></i> Vidéos IA</a></li>
+    <li><a href="#musiques" onclick="closeMob()"><i class="fas fa-headphones" style="width:20px;color:var(--b)"></i> Musiques</a></li>
+    <li><a href="#temoignages" onclick="closeMob()"><i class="fas fa-star" style="width:20px;color:var(--b)"></i> Témoignages</a></li>
+    <li><a href="#contact" onclick="closeMob()" style="background:var(--b);color:var(--w);border-radius:14px;"><i class="fas fa-paper-plane" style="width:20px"></i> Contact</a></li>
+  </ul>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div class="hero-mesh"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-aurora"></div>
+  <div class="particles" id="particles"></div>
+  <div class="hero-inner">
+    <div class="hero-txt">
+      <div class="hero-eyebrow"><span class="dot-live"></span> Créateur Visuel · Design &amp; IA</div>
+      <h1 class="hero-h1">
+        Je crée des<br>
+        <span class="hl">visuels</span> qui<br>
+        marquent les<br>esprits.
+      </h1>
+      <p class="hero-p">Design graphique, branding et création de visuels assistés par intelligence artificielle. Je transforme vos idées en créations percutantes et mémorables.</p>
+      <div class="hero-btns">
+        <a href="#portfolio" class="btn-y magnetic"><i class="fas fa-folder-open"></i> Voir mes projets</a>
+        <a href="#contact" class="btn-ghost magnetic"><i class="fas fa-paper-plane"></i> Me contacter</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num count-num" data-target="25">0</span><span class="hero-stat-num">+</span>
+          <span class="hero-stat-label">Projets réalisés</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num count-num" data-target="100">0</span><span class="hero-stat-num">%</span>
+          <span class="hero-stat-label">Clients satisfaits</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-num count-num" data-target="2">0</span><span class="hero-stat-num"> ans</span>
+          <span class="hero-stat-label">D'expérience</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card tilt">
+        <img src="images/1761523286705.jpg" alt="Samuel Avocevou" style="width:100%;height:100%;object-fit:cover;border-radius:30px;display:block;">
+        <div class="hero-glow"></div>
+        <div class="hero-badge-f"><i class="fas fa-bolt"></i> Design · IA · Musique</div>
+        <div class="hero-badge-b">
+          <span class="num">25+</span>
+          <span style="font-size:.72rem;color:rgba(255,255,255,.6)">Projets<br>réalisés</span>
+        </div>
+        <div class="hero-deco-dots">
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- ==================== ABOUT ==================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-img-wrap rv left">
+        <div class="about-img-fr">
+          <img src="images/1769888992200.jpg" alt="Samuel Avocevou">
+        </div>
+        <div class="about-deco-sq"></div>
+        <div class="about-deco-dot"></div>
+        <div class="about-deco-line"></div>
+      </div>
+      <div class="rv right d2">
+        <div class="stag"><i class="fas fa-user"></i> Qui suis-je ?</div>
+        <h2 class="stit">Samuel <em>Avocevou</em></h2>
+        <p style="color:var(--txt2);line-height:1.92;margin-bottom:16px;">Je suis un <strong style="color:var(--b)">créatif visuel passionné</strong>, spécialisé dans la conception d'affiches, d'étiquettes produits, de logos, de publications réseaux sociaux et de visuels de communication percutants.</p>
+        <p style="color:var(--txt2);line-height:1.92;margin-bottom:16px;">Ma particularité ? Je combine <strong style="color:var(--b)">l'intelligence artificielle</strong>, le design graphique et la stratégie visuelle pour créer des visuels originaux, mémorables et impactants. Je travaille aussi bien sur des projets fictifs (pour explorer ma créativité) que sur des projets réels pour des marques et entreprises.</p>
+        <p style="color:var(--txt2);line-height:1.92;margin-bottom:16px;">🎧 Je suis également fondateur de <strong style="color:var(--b)">TonSonPerso</strong>, un service de création de musiques personnalisées avec IA, livrées en MP3 pour toute occasion : anniversaire, amour, hommage, etc.</p>
+        <div class="skills-blocks">
+          <div class="skill-block rv up d1"><div class="sb-icon"><i class="fas fa-palette"></i></div><span class="sb-label">Design Graphique</span></div>
+          <div class="skill-block rv up d2"><div class="sb-icon"><i class="fas fa-trademark"></i></div><span class="sb-label">Branding</span></div>
+          <div class="skill-block rv up d3"><div class="sb-icon"><i class="fas fa-robot"></i></div><span class="sb-label">IA Générative</span></div>
+          <div class="skill-block rv up d1"><div class="sb-icon"><i class="fas fa-video"></i></div><span class="sb-label">Vidéo Pub.</span></div>
+          <div class="skill-block rv up d2"><div class="sb-icon"><i class="fas fa-bullhorn"></i></div><span class="sb-label">Affiches Pub.</span></div>
+          <div class="skill-block rv up d3"><div class="sb-icon"><i class="fas fa-tag"></i></div><span class="sb-label">Étiquettes</span></div>
+          <div class="skill-block rv up d1"><div class="sb-icon"><i class="fas fa-vector-square"></i></div><span class="sb-label">Logos</span></div>
+          <div class="skill-block rv up d2"><div class="sb-icon"><i class="fas fa-cube"></i></div><span class="sb-label">Mockups</span></div>
+          <div class="skill-block rv up d3"><div class="sb-icon"><i class="fas fa-music"></i></div><span class="sb-label">Musiques IA</span></div>
+          <div class="skill-block rv up d4"><div class="sb-icon"><i class="fas fa-chess"></i></div><span class="sb-label">Stratégie Visuelle</span></div>
+        </div>
+        <div class="about-tonson rv up d3">
+          <div class="about-tonson-icon"><i class="fas fa-headphones-alt"></i></div>
+          <div class="about-tonson-text">
+            <strong>Fondateur de TonSonPerso</strong>
+            <span>Musiques personnalisées avec IA · Livraison MP3 rapide</span>
+          </div>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="#contact" class="btn-y" style="display:inline-flex;"><i class="fas fa-handshake"></i> Travaillons ensemble</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SERVICES ==================== -->
+<section id="services">
+  <div class="services-light"></div>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:64px;" class="rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-briefcase"></i> Ce que je propose</div>
+      <h2 class="stit" style="color:var(--w)">Mes <em>Services</em></h2>
+      <p class="ssub" style="margin:0 auto;color:rgba(255,255,255,.5);">Design visuel sur mesure pour particuliers, entreprises et marques.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-card rv up d1"><div class="svc-num">01</div><div class="svc-icon-w"><i class="fas fa-image"></i></div><h3>Affiches Professionnelles</h3><p>Affiches percutantes pour campagnes, événements ou réseaux sociaux. Des visuels qui capturent l'attention et transmettent votre message avec force.</p></div>
+      <div class="svc-card rv up d2"><div class="svc-num">02</div><div class="svc-icon-w"><i class="fas fa-box-open"></i></div><h3>Étiquettes Produits</h3><p>Packaging visuel premium pour aliments, cosmétiques et plus. Un habillage qui séduit, inspire confiance et donne envie d'acheter.</p></div>
+      <div class="svc-card rv up d3"><div class="svc-num">03</div><div class="svc-icon-w"><i class="fas fa-fingerprint"></i></div><h3>Logos &amp; Identités</h3><p>Logos cohérents, modernes et alignés à votre image de marque. Une identité qui vous ressemble et vous démarque dans votre marché.</p></div>
+      <div class="svc-card rv up d1"><div class="svc-num">04</div><div class="svc-icon-w"><i class="fas fa-mobile-screen-button"></i></div><h3>Mockups Personnalisés</h3><p>Mise en scène réaliste de vos produits ou visuels. Présentez vos créations de manière professionnelle avant même la production.</p></div>
+      <div class="svc-card rv up d2"><div class="svc-num">05</div><div class="svc-icon-w"><i class="fas fa-headphones"></i></div><h3>Musiques Personnalisées</h3><p>Chansons 100% sur-mesure depuis votre histoire ou message. Livraison MP3 rapide. Anniversaires, couples, hommages et plus encore.</p></div>
+      <div class="svc-card rv up d3"><div class="svc-num">06</div><div class="svc-icon-w"><i class="fas fa-camera"></i></div><h3>Photoshooting IA</h3><p>Sublimez vos produits avec des shootings professionnels assistés par IA, sans avoir besoin d'un photographe classique.</p></div>
+      <div class="svc-card rv up d4"><div class="svc-num">07</div><div class="svc-icon-w"><i class="fas fa-video"></i></div><h3>Vidéos IA Créatives</h3><p>Création de vidéos assistées par intelligence artificielle pour vos projets de communication, publicité ou contenu digital.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PORTFOLIO ==================== -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="pf-head rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-layer-group"></i> Mes réalisations</div>
+      <h2 class="stit">Mon <em>Portfolio</em></h2>
+      <p class="ssub" style="margin:0 auto;">Sélection de mes meilleurs travaux en design graphique, branding et création visuelle.</p>
+    </div>
+    <div class="pf-filters rv up d2">
+      <button class="pf-btn on" data-f="all"><span>Tous</span></button>
+      <button class="pf-btn" data-f="affiche"><span>Affiches</span></button>
+      <button class="pf-btn" data-f="etiquette"><span>Étiquettes</span></button>
+      <button class="pf-btn" data-f="banniere"><span>Bannières</span></button>
+      <button class="pf-btn" data-f="logo"><span>Logos &amp; Identités</span></button>
+      <button class="pf-btn" data-f="mockup"><span>Mockups</span></button>
+      <button class="pf-btn" data-f="photoshooting"><span>Photoshooting</span></button>
+    </div>
+    <div class="pf-grid" id="pfGrid">
+
+      <!-- ===== AFFICHES ===== -->
+      <div class="pf-item rv up" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c1"><div class="pf-slide"><img loading="lazy" src="images/Challenge_jour10.jpg" alt="Titan Gym Club"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Titan Gym Club</h3><p class="pf-desc">L'affiche présente un athlète en pleine action avec un contraste visuel fort entre l'ombre et la lumière, mettant en valeur la puissance et la détermination.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c2"><div class="pf-slide"><img loading="lazy" src="images/challenge_jour7.jpg" alt="Voitures"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Location &amp; Vente de Voitures</h3><p class="pf-desc">Affiche dynamique pour une entreprise de location et vente de véhicules. Style épuré, moderne, orienté business.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c3"><div class="pf-slide"><img loading="lazy" src="images/1752174917262.jpg" alt="CodeRéseau"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>CodeRéseau</h3><p class="pf-desc">Conception d'une affiche de recrutement pour une startup tech fictive spécialisée dans la création de réseaux.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c4"><div class="pf-slide"><img loading="lazy" src="images/1752215421182.jpg" alt="Brilys"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Brilys – Service de nettoyage</h3><p class="pf-desc">Cette affiche met en valeur une entreprise de nettoyage professionnel : Brilys.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c5"><div class="pf-slide"><img loading="lazy" src="images/1760343920854.jpg" alt="Cléopatre"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Cléopatre Chips</h3><p class="pf-desc">Une affiche type produit pour présenter les chips de banane Cléopatre.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c6"><div class="pf-slide"><img loading="lazy" src="images/Affiche_publicitaire_design1.jpg" alt="Design"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Design Graphique</h3><p class="pf-desc">J'ai conçu cette affiche en pensant à ces marques qui marquent les esprits.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c7"><div class="pf-slide"><img loading="lazy" src="images/1760343920871.jpg" alt="Ogui Tché"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Ogui Tché</h3><p class="pf-desc">Une affiche publicitaire de mise en scène réalisée pour montrer une famille autour du produit Ogui Tché.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c8"><div class="pf-slide"><img loading="lazy" src="images/challenge_Jour2.png" alt="Essence"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Essence d'Ébène</h3><p class="pf-desc">Affiche pour une marque imaginaire valorisant la beauté et la noblesse de la peau noire.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c9"><div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0021.jpg" alt="INSPEI"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>INSPEI Crocs &amp; Jeux</h3><p class="pf-desc">Affiche de présentation de l'événement INSPEI Crocs &amp; Jeux.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c10"><div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0022.jpg" alt="Rosso"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Rosso Délice</h3><p class="pf-desc">Affiche publicitaire pour la marque de boissons naturelles Rosso Délice.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c11"><div class="pf-slide"><img loading="lazy" src="images/IMG_20251027_WA0014.jpg" alt="Ogui"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Ogui Tché</h3><p class="pf-desc">Affiche publicitaire de mise en scène réelle pour donner envie de prendre le produit.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c12"><div class="pf-slide"><img loading="lazy" src="images/Ogui_tche.jpg" alt="Ogui"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>Ogui Tché – Prix</h3><p class="pf-desc">Une affiche type produit pour présenter Ogui Tché avec son prix.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up" data-cat="affiche"><div class="pf-car"><div class="pf-slides" id="c13"><div class="pf-slide"><img loading="lazy" src="images/Shawarma_Rhetice1.jpg" alt="WINNER"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Affiche Publicitaire</div><h3>CHEZ WINNER</h3><p class="pf-desc">Refonte de l'affiche publicitaire d'une marque de shawarma et paninis. Client validé avec enthousiasme.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <!-- ===== BANNIÈRES ===== -->
+      <div class="pf-item rv up" data-cat="banniere"><div class="pf-car"><div class="pf-slides" id="c14"><div class="pf-slide"><img loading="lazy" src="images/1760344163695.jpg" alt="Bin'Aïs Events"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Bannière</div><h3>Bin'Aïs Events</h3><p class="pf-desc">Bannière impactante pour présenter des services en design graphique.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="banniere"><div class="pf-car"><div class="pf-slides" id="c15"><div class="pf-slide"><img loading="lazy" src="images/Banniere_Facebook_Samuel_AVOCEVOU_061611.jpg" alt="Samuel"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Bannière</div><h3>Bannière Samuel</h3><p class="pf-desc">Une bannière réalisée pour mon profil Facebook.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="banniere"><div class="pf-car"><div class="pf-slides" id="c16"><div class="pf-slide"><img loading="lazy" src="images/banniere_honore.jpg" alt="Honoré"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Bannière</div><h3>Bannière Développeur Web</h3><p class="pf-desc">Bannière réalisée pour un développeur web full-stack.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up" data-cat="banniere"><div class="pf-car"><div class="pf-slides" id="c17"><div class="pf-slide"><img loading="lazy" src="images/banniere_cleopatre.jpg" alt="Cléopatre"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Bannière</div><h3>Cléopatre Chips</h3><p class="pf-desc">Bannière réalisée pour Cléopatre Chips.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <!-- ===== ÉTIQUETTES ===== -->
+      <div class="pf-item rv up" data-cat="etiquette"><div class="pf-car"><div class="pf-slides" id="c18"><div class="pf-slide"><img loading="lazy" src="images/1760343920893.jpg" alt="Yelenvita"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Étiquette</div><h3>Yelenvita</h3><p class="pf-desc">Étiquette pour la marque locale Yelenvita, spécialisée dans la commercialisation des céréales.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="etiquette"><div class="pf-car"><div class="pf-slides" id="c19"><div class="pf-slide"><img loading="lazy" src="images/Challenge_jour8.jpg" alt="Jus Tropical"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Étiquette</div><h3>Étiquette Jus Tropical</h3><p class="pf-desc">Étiquette conçue pour la marque de boissons naturelles Rosso Délice.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d3" data-cat="etiquette"><div class="pf-car"><div class="pf-slides" id="c20"><div class="pf-slide"><img loading="lazy" src="images/Ogui_tche_modif.jpg" alt="Ogui Tché"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Étiquette</div><h3>Ogui Tché</h3><p class="pf-desc">Étiquette réalisée pour Ogui Tché.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <!-- ===== MOCKUPS ===== -->
+      <div class="pf-item rv up" data-cat="mockup"><div class="pf-car"><div class="pf-slides" id="c21"><div class="pf-slide"><img loading="lazy" src="images/mockup_Ogui_tche_023235.jpg" alt="Ogui Tché"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Mockup</div><h3>Ogui Tché</h3><p class="pf-desc">Mockup réalisé pour le logo de Ogui Tché.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div></div>
+
+      <div class="pf-item rv up d2" data-cat="mockup">
+        <div class="pf-car">
+          <div class="pf-slides" id="c22">
+            <div class="pf-slide"><img loading="lazy" src="images/1770669939236.png" alt="AKLE SESSI 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770669939348.png" alt="AKLE SESSI 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770669939483.png" alt="AKLE SESSI 3"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c22">1 / 3</div>
+          <button class="pf-arr l" onclick="mv('c22',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c22',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c22"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Mockup</div><h3>AKLE SESSI</h3><p class="pf-desc">Refonte complète pour un entrepreneur. Nouvelle composition structurée, accroche percutante, call-to-action visible.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div>
+      </div>
+
+      <!-- ===== LOGOS ===== -->
+      <div class="pf-item rv up" data-cat="logo"><div class="pf-car"><div class="pf-slides" id="c23"><div class="pf-slide"><img loading="lazy" src="images/Screenshot_20250830_194315_1.jpg" alt="CodeRéseau"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Logo</div><h3>Logo CodeRéseau</h3></div></div>
+
+      <div class="pf-item rv up d2" data-cat="logo"><div class="pf-car"><div class="pf-slides" id="c24"><div class="pf-slide"><img loading="lazy" src="images/Screenshot_20250830_194244_1.jpg" alt="Winner"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Logo</div><h3>Logo Winner</h3></div></div>
+
+      <div class="pf-item rv up d3" data-cat="logo"><div class="pf-car"><div class="pf-slides" id="c25"><div class="pf-slide"><img loading="lazy" src="images/Screenshot_20250830_194251_1.jpg" alt="Ogui Tché"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Logo</div><h3>Logo Ogui Tché</h3></div></div>
+
+      <div class="pf-item rv up" data-cat="logo"><div class="pf-car"><div class="pf-slides" id="c26"><div class="pf-slide"><img loading="lazy" src="images/Screenshot_20250830_194303_1.jpg" alt="Titan"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Logo</div><h3>Logo Titan</h3></div></div>
+
+      <div class="pf-item rv up d2" data-cat="logo"><div class="pf-car"><div class="pf-slides" id="c27"><div class="pf-slide"><img loading="lazy" src="images/Screenshot_20250830_194337_1.jpg" alt="Brilys"></div></div><div class="pf-car-overlay"></div></div><div class="pf-info"><div class="pf-cat">Logo</div><h3>Logo Brilys</h3></div></div>
+
+      <!-- ===== PHOTOSHOOTING ===== -->
+      <!-- c28: Street-Food Shawarmas (9 slides) -->
+      <div class="pf-item rv up d3" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c28">
+            <div class="pf-slide"><div class="pf-ph" style="position:absolute;top:8px;left:8px;width:auto;height:auto;background:rgba(230,81,0,.85);padding:4px 10px;border-radius:20px;font-size:.65rem;color:#fff;"><i class="fas fa-exclamation-triangle"></i> AVANT</div><img loading="lazy" src="images/1760344363318.jpg" alt="Shawarma Avant"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363215.png" alt="Shawarma 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363264.png" alt="Shawarma 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363366.jpg" alt="Shawarma Avant 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363283.png" alt="Shawarma 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363240.png" alt="Shawarma 6"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363349.png" alt="Shawarma 7"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363301.jpg" alt="Shawarma Avant 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1760344363187.png" alt="Shawarma 9"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c28">1 / 9</div>
+          <button class="pf-arr l" onclick="mv('c28',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c28',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c28"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Refonte Visuelle · Client Réel</div><h3>Street-Food Shawarmas &amp; Paninis</h3><p class="pf-desc">Refonte complète pour un entrepreneur dont l'ancienne affiche manquait d'impact. Client validé avec enthousiasme.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div>
+      </div>
+
+      <!-- c29: Tania (11 slides) -->
+      <div class="pf-item rv up" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c29">
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133895.png" alt="Tania 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133811.png" alt="Tania 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133747.png" alt="Tania 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133682.png" alt="Tania 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133626.png" alt="Tania 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133544.png" alt="Tania 6"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133458.png" alt="Tania 7"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133338.jpeg" alt="Tania 8"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133214.jpeg" alt="Tania 9"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133127.png" alt="Tania 10"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133055.jpeg" alt="Tania 11"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c29">1 / 11</div>
+          <button class="pf-arr l" onclick="mv('c29',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c29',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c29"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Tania</h3></div>
+      </div>
+
+      <!-- c30: CeraVe (4 slides) -->
+      <div class="pf-item rv up d2" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c30">
+            <div class="pf-slide"><img loading="lazy" src="images/1770670133992.png" alt="CeraVe 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134080.png" alt="CeraVe 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134206.png" alt="CeraVe 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134314.png" alt="CeraVe 4"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c30">1 / 4</div>
+          <button class="pf-arr l" onclick="mv('c30',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c30',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c30"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>CeraVe</h3></div>
+      </div>
+
+      <!-- c31: C-NIACIN (3 slides) -->
+      <div class="pf-item rv up d3" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c31">
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134439.png" alt="C-NIACIN 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134559.png" alt="C-NIACIN 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134679.png" alt="C-NIACIN 3"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c31">1 / 3</div>
+          <button class="pf-arr l" onclick="mv('c31',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c31',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c31"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>C-NIACIN TONING CREAM</h3></div>
+      </div>
+
+      <!-- c32: ANUA (3 slides) -->
+      <div class="pf-item rv up" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c32">
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134782.png" alt="ANUA 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134882.png" alt="ANUA 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/1770670134965.png" alt="ANUA 3"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c32">1 / 3</div>
+          <button class="pf-arr l" onclick="mv('c32',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c32',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c32"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>ANUA 100+</h3></div>
+      </div>
+
+      <!-- c33: Agonlinmi (5 slides) -->
+      <div class="pf-item rv up d2" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c33">
+            <div class="pf-slide"><img loading="lazy" src="images/Agonlinmi1.png" alt="Agonlinmi 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Agonlinmi2.png" alt="Agonlinmi 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Agonlinmi3.png" alt="Agonlinmi 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Agonlinmi4.png" alt="Agonlinmi 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Agonlinmi5.png" alt="Agonlinmi 5"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c33">1 / 5</div>
+          <button class="pf-arr l" onclick="mv('c33',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c33',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c33"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Agonlinmi</h3></div>
+      </div>
+
+      <!-- c34: Evivi (4 slides) -->
+      <div class="pf-item rv up d3" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c34">
+            <div class="pf-slide"><img loading="lazy" src="images/evivi1.png" alt="Evivi 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/evivi2.png" alt="Evivi 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/evivi3.png" alt="Evivi 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/evivi4.png" alt="Evivi 4"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c34">1 / 4</div>
+          <button class="pf-arr l" onclick="mv('c34',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c34',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c34"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Evivi</h3></div>
+      </div>
+
+      <!-- c35: Ogui Tché photos (9 slides) -->
+      <div class="pf-item rv up" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c35">
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0014.jpg" alt="Ogui 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0015.jpg" alt="Ogui 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0016.jpg" alt="Ogui 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0017.jpg" alt="Ogui 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0018.jpg" alt="Ogui 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0019.jpg" alt="Ogui 6"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0020.jpg" alt="Ogui 7"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0021.jpg" alt="Ogui 8"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0022.jpg" alt="Ogui 9"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c35">1 / 9</div>
+          <button class="pf-arr l" onclick="mv('c35',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c35',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c35"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Ogui Tché</h3></div>
+      </div>
+
+      <!-- c36: LIMA bio (6 slides) -->
+      <div class="pf-item rv up d2" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c36">
+            <div class="pf-slide"><img loading="lazy" src="images/lima_bio1.png" alt="LIMA 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/lima_bio2.png" alt="LIMA 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Photo_Mise_en_scene_reelle_Bouillon_d_assaisonnement.png" alt="LIMA 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Photo_Mise_en_scene_reelle_Bouillon_d_assaisonnement2.png" alt="LIMA 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Photo_studio_Jus_de_betterave_a_l_ananas.png" alt="LIMA 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Photo_Studio_Jus_de_citron.png" alt="LIMA 6"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c36">1 / 6</div>
+          <button class="pf-arr l" onclick="mv('c36',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c36',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c36"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>LIMA bio</h3></div>
+      </div>
+
+      <!-- c37: Yelenvita photos (8 slides) -->
+      <div class="pf-item rv up d3" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c37">
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0034.jpg" alt="Yelenvita 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0035.jpg" alt="Yelenvita 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0036.jpg" alt="Yelenvita 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0037.jpg" alt="Yelenvita 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0038.jpg" alt="Yelenvita 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0039.jpg" alt="Yelenvita 6"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0040.jpg" alt="Yelenvita 7"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0041.jpg" alt="Yelenvita 8"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c37">1 / 8</div>
+          <button class="pf-arr l" onclick="mv('c37',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c37',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c37"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Yelenvita</h3></div>
+      </div>
+
+      <!-- c38: BMS (5 slides) -->
+      <div class="pf-item rv up" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c38">
+            <div class="pf-slide"><img loading="lazy" src="images/Lemon_syrup1.png" alt="BMS 1"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/Lemon_syrup2.png" alt="BMS 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/gari_lait_coco3.png" alt="BMS 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/gari_lait_coco2.png" alt="BMS 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/gari_lait_coco1.png" alt="BMS 5"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c38">1 / 5</div>
+          <button class="pf-arr l" onclick="mv('c38',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c38',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c38"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>BMS</h3></div>
+      </div>
+
+      <!-- c39: Ely Délices (6 slides) -->
+      <div class="pf-item rv up d2" data-cat="photoshooting">
+        <div class="pf-car">
+          <div class="pf-slides" id="c39">
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0028.jpg" alt="Ely Avant"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0029.jpg" alt="Ely 2"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0030.jpg" alt="Ely 3"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0031.jpg" alt="Ely 4"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0032.jpg" alt="Ely 5"></div>
+            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251013_WA0033.jpg" alt="Ely 6"></div>
+          </div>
+          <div class="pf-car-overlay"></div>
+          <div class="pf-counter show" id="ct-c39">1 / 6</div>
+          <button class="pf-arr l" onclick="mv('c39',-1)"><i class="fas fa-chevron-left"></i></button>
+          <button class="pf-arr r" onclick="mv('c39',1)"><i class="fas fa-chevron-right"></i></button>
+          <div class="pf-dots" id="d-c39"></div>
+        </div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Ely Délices</h3></div>
+      </div>
+
+    </div><!-- /pf-grid -->
+  </div>
+</section>
+
+<!-- ==================== VIDÉOS IA ==================== -->
+<section id="videos">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:64px;" class="rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-wand-magic-sparkles"></i> Intelligence Artificielle</div>
+      <h2 class="stit">Vidéos <em>Créées avec l'IA</em></h2>
+      <p class="ssub" style="margin:0 auto;">Des créations vidéo uniques générées par intelligence artificielle, avec direction artistique de Samuel.</p>
+    </div>
+    <div class="vid-grid">
+
+      <!-- FIX: balise <video> directe, pas de vignette, pas de thumbnail -->
+      <!-- FIX: chaque vidéo est indépendante, rejouable sans rechargement -->
+      <div class="vid-card rv up d1">
+        <div class="vid-wrap">
+          <div class="vid-ai-badge"><i class="fas fa-robot"></i> Créée avec l'IA</div>
+          <video id="vid1" src="Videos/shotcut_20260115_223856.mp4" controls preload="none" poster="" style="width:100%;display:block;aspect-ratio:16/9;background:#06061a;"></video>
+        </div>
+        <div class="vid-info">
+          <h4>Vidéo publicitaire – Agonlinmi</h4>
+          <p>Vidéo publicitaire IA pour la marque Agonlinmi.</p>
+        </div>
+      </div>
+
+      <div class="vid-card rv up d2">
+        <div class="vid-wrap">
+          <div class="vid-ai-badge"><i class="fas fa-robot"></i> Créée avec l'IA</div>
+          <video id="vid2" src="Videos/shotcut_20260117_171448.mp4" controls preload="none" poster="" style="width:100%;display:block;aspect-ratio:16/9;background:#06061a;"></video>
+        </div>
+        <div class="vid-info">
+          <h4>Vidéo publicitaire – Sac à main femme</h4>
+          <p>Création IA pour un sac à main de luxe.</p>
+        </div>
+      </div>
+
+      <div class="vid-card rv up d3">
+        <div class="vid-wrap">
+          <div class="vid-ai-badge"><i class="fas fa-robot"></i> Créée avec l'IA</div>
+          <video id="vid3" src="Videos/shotcut_20260120_202138.mp4" controls preload="none" poster="" style="width:100%;display:block;aspect-ratio:16/9;background:#06061a;"></video>
+        </div>
+        <div class="vid-info">
+          <h4>Vidéo publicitaire – Bouillon Evivi</h4>
+          <p>Vidéo IA pour le bouillon naturel Evivi.</p>
+        </div>
+      </div>
+
+      <div class="vid-card rv up d4">
+        <div class="vid-wrap">
+          <div class="vid-ai-badge"><i class="fas fa-robot"></i> Créée avec l'IA</div>
+          <video id="vid4" src="Videos/shotcut_20260123_214424.mp4" controls preload="none" poster="" style="width:100%;display:block;aspect-ratio:16/9;background:#06061a;"></video>
+        </div>
+        <div class="vid-info">
+          <h4>Vidéo publicitaire – Lima bio Épices</h4>
+          <p>Vidéo IA pour les épices et bouillon naturel Lima bio.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MUSIQUES ==================== -->
+<section id="musiques">
+  <div class="wrap" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:64px;" class="rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-headphones"></i> TonSonPerso</div>
+      <h2 class="stit" style="color:var(--w)">Musiques <em>Personnalisées</em></h2>
+      <p class="ssub" style="margin:0 auto;color:rgba(255,255,255,.5);">Découvrez mes créations audiovisuelles assistées par intelligence artificielle</p>
+    </div>
+    <div class="mus-grid">
+      <div class="mus-card rv up d1" id="mc1">
+        <div class="mus-top">
+          <div class="mus-icon" style="background:linear-gradient(135deg,#0d0dd3,#4040ee)"><i class="fas fa-music"></i><div class="mus-waves"><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="mus-meta"><h4>Petite Bouchée</h4><span><i class="fas fa-store" style="margin-right:4px"></i>Entreprise · Pop Cakes</span></div>
+        </div>
+        <p class="mus-desc">Musique personnalisée créée avec IA pour une entreprise spécialisée dans la vente de pop cakes. Ambiance joyeuse et gourmande.</p>
+        <audio id="a1" src="Musiques/Petite_bouchee.mp3"></audio>
+        <div class="mus-ctrl">
+          <button class="mus-play" onclick="togMus('a1','mc1',this)"><i class="fas fa-play"></i></button>
+          <div class="mus-prog-w"><input type="range" class="mus-prog" id="pa1" value="0" min="0" max="100" oninput="seekA('a1',this.value)"><div class="mus-time" id="ta1">0:00 / 0:00</div></div>
+        </div>
+      </div>
+      <div class="mus-card rv up d2" id="mc2">
+        <div class="mus-top">
+          <div class="mus-icon" style="background:linear-gradient(135deg,#ffc107,#ff9800)"><i class="fas fa-flag" style="color:#06061a"></i><div class="mus-waves"><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="mus-meta"><h4>65 Ans d'Indépendance du Bénin</h4><span><i class="fas fa-globe-africa" style="margin-right:4px"></i>Hommage · Bénin</span></div>
+        </div>
+        <p class="mus-desc">Musique personnalisée créée pour la fête des 65 ans d'indépendance du Bénin. Ambiance patriotique et festive.</p>
+        <audio id="a2" src="Musiques/Benin_Independance_65ans.mp3"></audio>
+        <div class="mus-ctrl">
+          <button class="mus-play" onclick="togMus('a2','mc2',this)"><i class="fas fa-play"></i></button>
+          <div class="mus-prog-w"><input type="range" class="mus-prog" id="pa2" value="0" min="0" max="100" oninput="seekA('a2',this.value)"><div class="mus-time" id="ta2">0:00 / 0:00</div></div>
+        </div>
+      </div>
+      <div class="mus-card rv up d3" id="mc3">
+        <div class="mus-top">
+          <div class="mus-icon" style="background:linear-gradient(135deg,#e91e63,#c2185b)"><i class="fas fa-heart"></i><div class="mus-waves"><span></span><span></span><span></span><span></span><span></span></div></div>
+          <div class="mus-meta"><h4>Lucia – Lumière de ma vie</h4><span><i class="fas fa-heart" style="margin-right:4px;color:#e91e63"></i>Amour · TonSonPerso</span></div>
+        </div>
+        <p class="mus-desc">Chanson d'amour personnalisée créée à la demande pour célébrer une personne chère. Livraison MP3 express.</p>
+        <audio id="a3" src="Musiques/Titre_Lucia_lumiere_de_ma_vie.mp3"></audio>
+        <div class="mus-ctrl">
+          <button class="mus-play" onclick="togMus('a3','mc3',this)"><i class="fas fa-play"></i></button>
+          <div class="mus-prog-w"><input type="range" class="mus-prog" id="pa3" value="0" min="0" max="100" oninput="seekA('a3',this.value)"><div class="mus-time" id="ta3">0:00 / 0:00</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TÉMOIGNAGES ==================== -->
+<section id="temoignages">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:64px;" class="rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-star"></i> Ce qu'ils disent</div>
+      <h2 class="stit" style="color:var(--w)">Avis de mes <em>clients</em></h2>
+    </div>
+    <div class="tem-track rv up d2">
+      <div class="tem-card"><div class="tem-stars">★★★★★</div><div class="tem-q">"</div><p class="tem-text">J'ai eu le plaisir d'être accompagné visuel par Mr Samuel AVOCEVOU, pour un challenge dont il nous a gratifié. Sa vidéo m'a permis de gagner beaucoup de clients même à l'intérieur car j'ai pris sa vidéo pour faire une publication sponsorisée et c'est juste waouh, pour les photos n'en parlons pas. Moi je le recommande déjà à mes confrères et consoeurs entrepreneurs. Il a le talent, n'attendons pas sa mort pour submerger sa méthode de rip, encourageons-le, en tout cas, moi je l'ai adopté tout simplement et je le recommande.</p><div class="tem-auth"><div class="tem-av">L</div><div><div class="tem-name">Lima Bio</div></div></div></div>
+      <div class="tem-card"><div class="tem-stars">★★★★★</div><div class="tem-q">"</div><p class="tem-text">J'ai beaucoup apprécié. Au début j'avais du mal à recevoir même des questions sur le prix. Mais depuis que je poste ça au moins les gens demande, ils sont intéressés.</p><div class="tem-auth"><div class="tem-av">B</div><div><div class="tem-name">Brunelle GBAGUIDI</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:64px;" class="rv up">
+      <div class="stag" style="justify-content:center"><i class="fas fa-paper-plane"></i> Parlons de votre projet</div>
+      <h2 class="stit">Contactez<em>-moi</em></h2>
+      <p class="ssub" style="margin:0 auto;">Pour une collaboration, un devis ou toute question — je suis là !</p>
+    </div>
+    <div class="ctt-grid">
+      <div class="rv left">
+        <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.38rem;margin-bottom:14px;">Commençons quelque chose<br>de <span style="color:var(--b)">grand</span> ensemble</h3>
+        <p style="color:var(--txt2);line-height:1.9;font-size:.9rem;margin-bottom:30px;">Chaque projet est unique. Dites-moi votre vision et je la transforme en visuel percutant. Disponible pour du design graphique, branding, identités visuelles et musiques IA.</p>
+        <a href="mailto:samuelavocevou2008@gmail.com" class="ctt-item">
+          <div class="ctt-ico b"><i class="fas fa-envelope"></i></div>
+          <span>samuelavocevou2008@gmail.com</span>
+        </a>
+        <a href="https://wa.me/2290157783280" target="_blank" rel="noopener" class="ctt-item">
+          <div class="ctt-ico g"><i class="fab fa-whatsapp"></i></div>
+          <span>+229 0157 783 280 · WhatsApp</span>
+        </a>
+        <!-- Réseaux sociaux avec icône ET libellé -->
+        <div class="soc-row" style="margin-top:30px;">
+          <a href="https://www.facebook.com/samuel.avocevou.1" target="_blank" rel="noopener" class="soc-btn soc-fb" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/samuelavocevou?utm_source=qr&igsh=eXFsbTBhdjhuNWdx" target="_blank" rel="noopener" class="soc-btn soc-ig" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/samuel-avocevou-932561365" target="_blank" rel="noopener" class="soc-btn soc-li" aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://wa.me/2290157783280" target="_blank" rel="noopener" class="soc-btn soc-wa" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+      <div class="ctt-form rv right d2">
+        <h3><i class="fab fa-whatsapp" style="color:#25d366"></i> Envoyer un message</h3>
+        <div class="fg"><label>Votre nom</label><input type="text" id="fn" placeholder="Ex : Samuel AVOCEVOU"></div>
+        <div class="fg"><label>Service souhaité</label>
+          <select id="fs">
+            <option value="">Sélectionnez un service...</option>
+            <option>Affiche Professionnelle</option>
+            <option>Étiquette Produit</option>
+            <option>Logo &amp; Identité Visuelle</option>
+            <option>Mockup Personnalisé</option>
+            <option>Musique Personnalisée (TonSonPerso)</option>
+            <option>Vidéo IA</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="fg"><label>Votre message</label><textarea id="fm" placeholder="Décrivez votre projet, vos besoins, votre délai..."></textarea></div>
+        <button class="btn-wa" onclick="sendWA()"><i class="fab fa-whatsapp"></i> Envoyer via WhatsApp</button>
+        <p class="wa-note"><i class="fab fa-whatsapp"></i> Le message s'enverra directement sur WhatsApp de Samuel</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-logo">Samuel<span>.</span></div>
+    <p class="ft-tagline">Créateur Visuel · Design Graphique</p>
+    <!-- Réseaux sociaux footer : icônes carrées avec libellé -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:8px 0;">
+      <a href="https://www.facebook.com/samuel.avocevou.1" target="_blank" class="soc-btn soc-fb"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/samuelavocevou?utm_source=qr&igsh=eXFsbTBhdjhuNWdx" target="_blank" class="soc-btn soc-ig"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/samuel-avocevou-932561365" target="_blank" class="soc-btn soc-li"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://wa.me/2290157783280" target="_blank" class="soc-btn soc-wa"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <p>© 2026 Samuel AVOCEVOU – Tous droits réservés</p>
+    <p>Développé par <b style="color: white;">Honoré KEGNIDE</b></p>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button class="b2t" id="b2t" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+/* ===== LOADER ===== */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+  }, 1900);
+});
+
+/* ===== CURSOR PREMIUM ===== */
+const curEl = document.getElementById('cur');
+const dot = curEl.querySelector('.cur-dot');
+const ring = curEl.querySelector('.cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+const isMobile = window.matchMedia('(hover:none)').matches;
+if (!isMobile) {
+  document.addEventListener('mousemove', e => {
+    mx=e.clientX; my=e.clientY;
+    dot.style.left=mx+'px'; dot.style.top=my+'px';
+  });
+  function animCur(){
+    rx+=(mx-rx)*.16; ry+=(my-ry)*.16;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animCur);
+  }
+  animCur();
+  document.querySelectorAll('a,button,.pf-item,.svc-card,.mus-card,.vid-card,.skill-block,.btn-y,.btn-ghost').forEach(el=>{
+    el.addEventListener('mouseenter',()=>ring.classList.add('expand'));
+    el.addEventListener('mouseleave',()=>ring.classList.remove('expand'));
+  });
+} else {
+  curEl.style.display='none';
+}
+
+/* ===== SPARKLE ON CLICK ===== */
+document.addEventListener('click', e => {
+  const stars = ['✦','✧','★','✶','✷'];
+  const s = document.createElement('div');
+  s.className = 'sparkle-star';
+  s.textContent = stars[Math.floor(Math.random()*stars.length)];
+  s.style.left = e.clientX+'px';
+  s.style.top  = e.clientY+'px';
+  s.style.fontSize = (10+Math.random()*10)+'px';
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(), 700);
+});
+
+/* ===== PROGRESS + NAV + B2T ===== */
+const pgbar = document.getElementById('pgbar');
+const nav   = document.getElementById('nav');
+const b2t   = document.getElementById('b2t');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  const h = document.body.scrollHeight - window.innerHeight;
+  pgbar.style.width = (s/h*100)+'%';
+  nav.classList.toggle('glass', s>60);
+  b2t.classList.toggle('on', s>400);
+}, {passive:true});
+
+/* ===== MOBILE NAV ===== */
+const ham = document.getElementById('ham');
+const mobNav = document.getElementById('mobNav');
+function toggleMob(){ham.classList.toggle('open');mobNav.classList.toggle('open');}
+function closeMob(){ham.classList.remove('open');mobNav.classList.remove('open');}
+ham.addEventListener('click', toggleMob);
+
+/* ===== REVEAL (IntersectionObserver) ===== */
+const rvEls = document.querySelectorAll('.rv');
+const rvObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('in'); rvObs.unobserve(e.target); } });
+}, {threshold:.1, rootMargin:'0px 0px -40px 0px'});
+rvEls.forEach(el => rvObs.observe(el));
+
+/* ===== FLOATING PARTICLES (hero) ===== */
+(function(){
+  const container = document.getElementById('particles');
+  if(!container) return;
+  const colors = ['rgba(255,193,7,.6)','rgba(13,13,211,.5)','rgba(255,255,255,.2)'];
+  for(let i=0;i<20;i++){
+    const p = document.createElement('div');
+    p.className='particle';
+    const size = 3+Math.random()*6;
+    p.style.cssText=`
+      width:${size}px;height:${size}px;
+      left:${Math.random()*100}%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      animation-duration:${6+Math.random()*10}s;
+      animation-delay:${Math.random()*8}s;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+/* ===== COUNTER ANIMATION ===== */
+function animateCounter(el, target, duration=1800) {
+  let start=null;
+  function step(ts){
+    if(!start)start=ts;
+    const progress=Math.min((ts-start)/duration,1);
+    const ease = 1-Math.pow(1-progress,3);
+    el.textContent=Math.floor(ease*target);
+    if(progress<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const counterObs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target;
+      animateCounter(el,parseInt(el.dataset.target));
+      counterObs.unobserve(el);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('.count-num[data-target]').forEach(el=>counterObs.observe(el));
+
+/* ===== HERO CARD TILT ===== */
+const tiltEl = document.querySelector('.hero-card.tilt');
+if(tiltEl && !isMobile){
+  tiltEl.addEventListener('mousemove', e=>{
+    const r=tiltEl.getBoundingClientRect();
+    const cx=r.left+r.width/2, cy=r.top+r.height/2;
+    const rx2=((e.clientY-cy)/r.height)*-14;
+    const ry2=((e.clientX-cx)/r.width)*14;
+    tiltEl.style.transform=`perspective(700px) rotateX(${rx2}deg) rotateY(${ry2}deg) scale(1.04)`;
+  });
+  tiltEl.addEventListener('mouseleave',()=>{tiltEl.style.transform='';});
+}
+
+/* =============================================================
+   CAROUSEL — MOTEUR COMPLET, CORRIGÉ
+   - width:100% sur pf-slides et pf-slide (FIX BUG principal)
+   - transition:transform seulement sur pf-item (FIX conflit)
+   - Auto-advance toutes les 4.5s
+   - Compteur "1 / N"
+   - Dots avec état actif (largeur étendue)
+   - Toucher swipe mobile
+   - Pause on hover
+============================================================= */
+const CS = {};
+const CAR_INTERVAL = 4500; // ms entre slides
+const timers = {};
+
+function initCar(id) {
+  const slides = document.getElementById(id);
+  if (!slides) return;
+  const n = slides.children.length;
+  CS[id] = { i:0, n, paused:false };
+
+  // Dots
+  const dd = document.getElementById('d-'+id);
+  if (dd && n > 1) {
+    dd.innerHTML = '';
+    for (let j=0;j<n;j++) {
+      const b = document.createElement('button');
+      b.className = 'pf-dot' + (j===0?' on':'');
+      b.setAttribute('aria-label','Slide '+(j+1));
+      b.onclick = () => goTo(id, j);
+      dd.appendChild(b);
+    }
+  }
+
+  // Counter init
+  updCounter(id);
+  upd(id);
+
+  // Auto-advance (only for multi-slide)
+  if (n > 1) startTimer(id);
+
+  // Swipe support
+  const car = slides.closest('.pf-car');
+  if (car) {
+    let sx=0;
+    car.addEventListener('touchstart', e=>{ sx=e.changedTouches[0].clientX; }, {passive:true});
+    car.addEventListener('touchend', e=>{
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx)>40) { mv(id, dx<0?1:-1); }
+    }, {passive:true});
+    // Pause on hover
+    car.addEventListener('mouseenter',()=>{ CS[id].paused=true; clearInterval(timers[id]); });
+    car.addEventListener('mouseleave',()=>{ if(!CS[id].paused)return; CS[id].paused=false; startTimer(id); });
+  }
+}
+
+function startTimer(id) {
+  clearInterval(timers[id]);
+  timers[id] = setInterval(() => {
+    if (!CS[id].paused) { CS[id].i=(CS[id].i+1)%CS[id].n; upd(id); }
+  }, CAR_INTERVAL);
+}
+
+function goTo(id, i) { CS[id].i=i; upd(id); startTimer(id); }
+function mv(id, d) {
+  const c=CS[id]; if(!c) return;
+  c.i=(c.i+d+c.n)%c.n;
+  upd(id); startTimer(id);
+}
+
+function upd(id) {
+  const slides = document.getElementById(id);
+  if (!slides) return;
+  const i = CS[id].i;
+  slides.style.transform = 'translateX(-'+(i*100)+'%)';
+  // Dots
+  const dd = document.getElementById('d-'+id);
+  if (dd) dd.querySelectorAll('.pf-dot').forEach((d,j)=>d.classList.toggle('on',j===i));
+  // Counter
+  updCounter(id);
+}
+
+function updCounter(id) {
+  const ct = document.getElementById('ct-'+id);
+  if (ct && CS[id]) ct.textContent = (CS[id].i+1)+' / '+CS[id].n;
+}
+
+// Init all carousels
+const allIds=['c1','c2','c3','c4','c5','c6','c7','c8','c9','c10',
+ 'c11','c12','c13','c14','c15','c16','c17','c18','c19','c20',
+ 'c21','c22','c23','c24','c25','c26','c27','c28','c29','c30',
+ 'c31','c32','c33','c34','c35','c36','c37','c38','c39'];
+allIds.forEach(id => initCar(id));
+
+/* ===== PORTFOLIO FILTER ===== */
+document.querySelectorAll('.pf-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    const f = btn.dataset.f;
+    document.querySelectorAll('.pf-item').forEach(item => {
+      const show = f==='all' || item.dataset.cat===f;
+      item.style.display = show ? '' : 'none';
+      if(show) { item.classList.remove('in'); setTimeout(()=>item.classList.add('in'),30); }
+    });
+  });
+});
+
+/* ===== TOGGLE DESCRIPTION ===== */
+function toggleD(btn) {
+  const item = btn.closest('.pf-item');
+  const exp = item.classList.toggle('exp');
+  btn.querySelector('i').className = exp ? 'fas fa-eye-slash' : 'fas fa-eye';
+  btn.querySelector('span').textContent = exp ? 'Voir moins' : 'Voir plus';
+}
+
+/* =============================================================
+   VIDÉOS — GESTION UN SEUL À LA FOIS, REJOUABLE
+   FIX: quand on joue une autre vidéo, la précédente est pausée
+   mais reste rejouable (on ne supprime pas le src).
+   FIX: balise <video> native directement dans le DOM.
+============================================================= */
+const allVids = document.querySelectorAll('video');
+
+allVids.forEach(v => {
+  v.addEventListener('play', () => {
+    // Pause toutes les autres vidéos
+    allVids.forEach(other => {
+      if (other !== v && !other.paused) {
+        other.pause();
+        // On ne réinitialise PAS currentTime → rejouable
+      }
+    });
+    // Pause aussi les musiques
+    stopAllAudio();
+  });
+});
+
+/* =============================================================
+   MUSIQUES — GESTION UN SEUL À LA FOIS, AUDIO REJOUABLE
+============================================================= */
+let curAudio = null;
+
+function stopAllAudio() {
+  if (!curAudio) return;
+  const { el, cid, btn } = curAudio;
+  el.pause();
+  // Ne pas remettre currentTime à 0 → rejouable depuis sa position
+  const card = document.getElementById(cid);
+  if (card) card.classList.remove('playing');
+  if (btn) btn.querySelector('i').className = 'fas fa-play';
+  curAudio = null;
+}
+
+function togMus(aid, cid, btn) {
+  const audio = document.getElementById(aid);
+  if (!audio) return;
+
+  // Si c'est la même piste → toggle play/pause
+  if (curAudio && curAudio.id === aid) {
+    if (audio.paused) {
+      audio.play().catch(()=>{});
+      document.getElementById(cid).classList.add('playing');
+      btn.querySelector('i').className = 'fas fa-pause';
+    } else {
+      audio.pause();
+      document.getElementById(cid).classList.remove('playing');
+      btn.querySelector('i').className = 'fas fa-play';
+    }
+    return;
+  }
+
+  // Stopper la précédente
+  stopAllAudio();
+  // Pause toutes les vidéos
+  allVids.forEach(v=>{ if(!v.paused) v.pause(); });
+
+  // Jouer la nouvelle
+  audio.play().catch(()=>{});
+  const card = document.getElementById(cid);
+  if (card) card.classList.add('playing');
+  btn.querySelector('i').className = 'fas fa-pause';
+  curAudio = { id:aid, el:audio, cid, btn };
+
+  audio.ontimeupdate = () => {
+    if (!audio.duration) return;
+    const pct = (audio.currentTime/audio.duration)*100;
+    const prog = document.getElementById('pa'+aid.slice(1));
+    const time = document.getElementById('ta'+aid.slice(1));
+    if (prog) prog.value = pct;
+    if (time) time.textContent = fmt(audio.currentTime)+' / '+fmt(audio.duration);
+  };
+  audio.onended = () => {
+    if (card) card.classList.remove('playing');
+    btn.querySelector('i').className = 'fas fa-play';
+    curAudio = null;
+    const prog = document.getElementById('pa'+aid.slice(1));
+    if (prog) prog.value = 0;
+    const time = document.getElementById('ta'+aid.slice(1));
+    if (time) time.textContent = '0:00 / '+fmt(audio.duration||0);
+  };
+}
+
+function seekA(aid, v) {
+  const a = document.getElementById(aid);
+  if (a && a.duration) a.currentTime = (v/100)*a.duration;
+}
+
+function fmt(t) {
+  return Math.floor(t/60)+':'+Math.floor(t%60).toString().padStart(2,'0');
+}
+
+/* ===== WHATSAPP FORM ===== */
+function sendWA() {
+  const n = document.getElementById('fn').value.trim();
+  const s = document.getElementById('fs').value;
+  const m = document.getElementById('fm').value.trim();
+  if (!n||!m) { alert('Veuillez remplir votre nom et votre message.'); return; }
+  const txt = 'Bonjour Samuel 👋\n\n*Nom :* '+n+'\n*Service :* '+(s||'Non précisé')+'\n\n*Message :*\n'+m;
+  window.open('https://wa.me/2290157783280?text='+encodeURIComponent(txt),'_blank');
+}
+
+/* ===== LAZY LOADING avec Intersection Observer ===== */
+// Native lazy loading via loading="lazy" déjà en place + observer pour la classe .loaded
+const imgObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const img = e.target;
+      img.addEventListener('load', ()=>img.classList.add('loaded'), {once:true});
+      if (img.complete) img.classList.add('loaded');
+      imgObs.unobserve(img);
+    }
+  });
+}, {rootMargin:'200px'});
+document.querySelectorAll('img').forEach(img => imgObs.observe(img));
+
+/* ===== STAGGER REVEAL au scroll ===== */
+// Réinitialise les éléments hors écran à chaque scroll pour stagger propre
+function batchReveal() {
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>{
+    const r=el.getBoundingClientRect();
+    if(r.top < window.innerHeight - 40) el.classList.add('in');
+  });
+}
+window.addEventListener('scroll', batchReveal, {passive:true});
+setTimeout(batchReveal, 200);
+
+/* ===== DISABLE CURSOR ON MOBILE ===== */
+if (isMobile) {
+  const curDiv = document.getElementById('cur');
+  if (curDiv) curDiv.style.display='none';
+}
+
+console.log('%c Samuel Avocevou – Portfolio Premium V2 ✦ ', 'background:#0d0dd3;color:#ffc107;font-weight:900;font-size:14px;padding:6px 12px;border-radius:6px;');
+</script>
+</body>
+</html>
