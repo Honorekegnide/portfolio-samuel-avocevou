@@ -603,7 +603,7 @@ section{padding:120px 6%;}
 /* ========== CAROUSEL CSS FIX ========== */
 .pf-car{
   position:relative;overflow:hidden;
-  height:270px;
+  height:max-content;
   /* Arrows hidden by default, visible on hover */
 }
 .pf-car .pf-arr{opacity:0;transform:translateY(-50%) scale(.8);transition:all .3s var(--ease);}
@@ -884,7 +884,7 @@ audio{display:none;}
 .soc-btn-ico:hover{transform:translateY(-5px) scale(1.1);box-shadow:0 12px 28px rgba(0,0,0,.22);}
 
 .ctt-form{
-  background:var(--w);border-radius:26px;padding:42px;
+  background:var(--w);border-radius:26px;padding:24px;
   border:1px solid var(--g3);box-shadow:var(--sh);
   position:relative;overflow:hidden;
 }
@@ -1000,6 +1000,7 @@ img.loaded{animation:none;background:none;}
   section{padding:90px 5%;}
   nav .nav-links{display:none;}
   .hamburger{display:flex;}
+  .ctt-grid{grid-template-columns: 1fr; gap: 40px;}
   .hero-inner{gap:30px;}
   .pf-grid,.mus-grid,.vid-grid{grid-template-columns:1fr;}
   .services-grid{grid-template-columns:1fr;}
@@ -1293,7 +1294,7 @@ img.loaded{animation:none;background:none;}
           <button class="pf-arr r" onclick="mv('c28',1)"><i class="fas fa-chevron-right"></i></button>
           <div class="pf-dots" id="d-c28"></div>
         </div>
-        <div class="pf-info"><div class="pf-cat">Refonte Visuelle · Client Réel</div><h3>Street-Food Shawarmas &amp; Paninis</h3><p class="pf-desc">Refonte complète pour un entrepreneur dont l'ancienne affiche manquait d'impact. Client validé avec enthousiasme.</p><button class="btn-vp" onclick="toggleD(this)"><i class="fas fa-eye"></i> <span>Voir plus</span></button></div>
+        <div class="pf-info"><div class="pf-cat">Photoshooting</div><h3>Cléopatre Chips</h3></div>
       </div>
 
       <!-- c29: Tania (11 slides) -->
@@ -1415,7 +1416,6 @@ img.loaded{animation:none;background:none;}
         <div class="pf-car">
           <div class="pf-slides" id="c35">
             <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0014.jpg" alt="Ogui 1"></div>
-            <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0015.jpg" alt="Ogui 2"></div>
             <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0016.jpg" alt="Ogui 3"></div>
             <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0017.jpg" alt="Ogui 4"></div>
             <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0018.jpg" alt="Ogui 5"></div>
@@ -1425,7 +1425,7 @@ img.loaded{animation:none;background:none;}
             <div class="pf-slide"><img loading="lazy" src="images/IMG_20251025_WA0022.jpg" alt="Ogui 9"></div>
           </div>
           <div class="pf-car-overlay"></div>
-          <div class="pf-counter show" id="ct-c35">1 / 9</div>
+          <div class="pf-counter show" id="ct-c35">1 / 8</div>
           <button class="pf-arr l" onclick="mv('c35',-1)"><i class="fas fa-chevron-left"></i></button>
           <button class="pf-arr r" onclick="mv('c35',1)"><i class="fas fa-chevron-right"></i></button>
           <div class="pf-dots" id="d-c35"></div>
